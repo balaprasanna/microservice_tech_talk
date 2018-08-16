@@ -25,3 +25,6 @@ WORKDIR /app
 EXPOSE 5000
 
 CMD ["/app/main"]
+
+# Ref:https://www.cloudreach.com/blog/containerize-this-golang-dockerfiles/
+# https://blog.codeship.com/building-minimal-docker-containers-for-go-applications/
