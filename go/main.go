@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 	"os"
 	"time"
 
@@ -10,6 +12,18 @@ import (
 
 const APIVERSION string = "v1"
 const TIMEFORMAT string = "2006-01-02 15:04:05.9999999"
+const SOURCE_URL string = "http://api.pnd.gs/v1/sources/"
+
+type Anything interface{}
+
+type EndPoint struct {
+	Popular string `json:"popular"`
+	Latest  string `json:"latest"`
+}
+
+type Source struct {
+	Endpoints EndPoint `json:"endpoints"`
+}
 
 func main() {
 
@@ -51,7 +65,27 @@ func GetTime(c *gin.Context) {
 
 //GetSource: Handler for /api/v1/source
 func GetSource(c *gin.Context) {
-	data := gin.H{}
+	resp, err := http.Get(SOURCE_URL)
+	if err != nil {
+		c.AbortWithError(500, err)
+		return
+	}
 
-	c.JSON(200, data)
+	defer resp.Body.Close()
+
+	var data []Source
+	err = json.NewDecoder(resp.Body).Decode(&data)
+	if err != nil {
+		c.AbortWithError(500, err)
+		return
+	}
+
+	var result = make(map[string][]string)
+
+	for index := 0; index < len(data); index++ {
+		result["latest"] = append(result["latest"], data[index].Endpoints.Latest)
+		result["popular"] = append(result["popular"], data[index].Endpoints.Popular)
+	}
+
+	c.JSON(200, result)
 }
