@@ -35,7 +35,7 @@ def time():
     return sendSuccessResponse(resp_data)
 
 # /api/v1/sources
-@api.route("/sources", methods=["GET"])
+@api.route("/source", methods=["GET"])
 def getsources():
     resp_data = {}
     resp_data = json.dumps(resp_data, indent=4)
