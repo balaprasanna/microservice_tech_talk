@@ -22,7 +22,7 @@ def sendSuccessResponse(resp_data, status=200, mimetype="application/json"):
 # "/"
 @app.route("/", methods=['GET'])
 def root():
-    resp_data = { "ok": str(datetime.now()) }
+    resp_data = { "status": "ok" }
     resp_data = json.dumps(resp_data, indent=4)
     return sendSuccessResponse(resp_data)
 

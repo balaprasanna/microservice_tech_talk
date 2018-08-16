@@ -36,7 +36,7 @@ func main() {
 //Root: Handler for /
 func Root(c *gin.Context) {
 	data := gin.H{
-		"Ok": time.Now().Format(TIMEFORMAT),
+		"status": "ok",
 	}
 	c.JSON(200, data)
 }
