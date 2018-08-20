@@ -13,7 +13,10 @@ app = express();
 //Define routes
 //GET /
 app.get('/', (req, resp) => {
-    resp.status(200).json({ "status": "ok" })
+    resp.status(200).json({ 
+        "status": "ok",
+        "hostname": process.env.host
+    })
 })
 
 var router = express.Router()

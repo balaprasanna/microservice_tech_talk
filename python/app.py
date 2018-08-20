@@ -67,16 +67,7 @@ def getsources():
     resp_data = get_news_source()
     resp_data = json.dumps(resp_data, indent=4)
     return sendSuccessResponse(resp_data)
-
-# /api/v1/news
-@api.route("/source/<src>/latest", methods=["GET"])
-def getNews(src):
-    limit = 5
-    if request.args.get("limit"):
-        limit = int(request.args.get("limit"))
-    data = get(SOURCE_URL + str(src))
-    if data:
-        data
+        
 
 
 # Registering Blueprints to /
