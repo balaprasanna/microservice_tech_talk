@@ -1,10 +1,10 @@
 C_ID := $(shell docker ps -aq)
 
 build:
-	docker build -t newsapp:nodejs .
+	docker build -t newsapp-nodejs:latest .
 
 run:
-	docker run -d -p 5000:5000 -e PORT=5000 newsapp:nodejs
+	docker run -d -p 5000:5000 -e PORT=5000 newsapp-nodejs:latest
 
 stop:
 	@docker stop $(C_ID)

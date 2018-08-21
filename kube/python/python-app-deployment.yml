@@ -18,7 +18,7 @@ spec:
         lang: python
     spec:
       containers:
-        - image: balanus/newsapp:python-v1
+        - image: balanus/newsapp-python:latest
           name: news-app
           imagePullPolicy: Always
           env:

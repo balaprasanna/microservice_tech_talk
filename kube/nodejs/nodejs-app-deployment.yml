@@ -18,7 +18,7 @@ spec:
         lang: nodejs
     spec:
       containers:
-        - image: balanus/newsapp:nodejs
+        - image: balanus/newsapp-nodejs:latest
           name: news-app
           env:
           - name: PORT

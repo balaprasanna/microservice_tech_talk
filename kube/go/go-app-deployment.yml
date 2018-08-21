@@ -18,7 +18,7 @@ spec:
         lang: go
     spec:
       containers:
-        - image: balanus/newsapp:go
+        - image: balanus/newsapp-go:latest
           name: news-app
           imagePullPolicy: Always
           env:

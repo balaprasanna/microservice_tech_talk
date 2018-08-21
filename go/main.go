@@ -49,8 +49,13 @@ func main() {
 
 //Root: Handler for /
 func Root(c *gin.Context) {
+	hostname, err := os.Hostname()
+	if err != nil {
+		hostname = "UnKnown"
+	}
 	data := gin.H{
-		"status": "ok",
+		"status": "Ok",
+		"host":   hostname,
 	}
 	c.JSON(200, data)
 }

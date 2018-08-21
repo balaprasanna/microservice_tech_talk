@@ -1,10 +1,10 @@
 C_ID := $(shell docker ps -aq)
 
 build:
-	@docker build -t newsapp:$(name) ./$(name)
+	@docker build -t newsapp-$(name):latest ./$(name)
 
 run:
-	@docker run -d -p 5000:5000 -e PORT=5000 newsapp:$(name)
+	@docker run -d -p 5000:5000 -e PORT=5000 newsapp-$(name):latest
 
 stop:
 	@docker stop $(C_ID)
@@ -25,10 +25,10 @@ loadtest:
 	@for i in `seq 1 $(n)`; do curl http://localhost:5000/api/v1/source; done;
 
 tag:
-	@docker tag newsapp:$(name) balanus/newsapp:$(name)
+	@docker tag newsapp-$(name):latest balanus/newsapp-$(name):latest
 
 push:
-	@docker push balanus/newsapp:$(name)
+	@docker push balanus/newsapp-$(name):latest
 
 k8s-create-namespace:
 	@kubectl apply -f kube/namespace/app-namespace.yml
