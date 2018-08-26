@@ -222,7 +222,7 @@ some k8s service.
 ```
 kubectl get svc
 ```
-DELETE THE ONE WE Created `nginx`
+Lets delete the service that we created previously: `nginx`
 
 ```
 kubectl delete svc nginx
