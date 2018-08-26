@@ -199,7 +199,7 @@ kubectl get deployment
 ```
 kubectl expose deployment nginx --type=LoadBalancer --name=nginx --port 80
 ```
-Note this step creates a loadbalancer in your aws account. Please make sure you delete this service when you delete your cluster. 
+Note this step creates a LoadBalancer in your aws account. Please make sure you delete this service when you delete your cluster. 
 
 ```
 bala:~/environment $ kubectl get svc
@@ -217,6 +217,20 @@ nginx        LoadBalancer   100.66.125.181   a74730dc5a92d11e8bfc80285e348f77-12
 
 Lets destroy the Cluster to save money.
 
+Before destroying the cluster, lets delete those LoadBalancers that we created while exposing 
+some k8s service.
+```
+kubectl get svc
+```
+DELETE THE ONE WE Created `nginx`
+
+```
+kubectl delete svc nginx
+```
+
+
+Now delete the cluster using KOPS.
+Kops will clean all the resources created for our k8s cluster. This will take about 3-5 mins.
 ```
 kops delete cluster --name ${KOPS_CLUSTER_NAME} --yes
 ```
@@ -268,8 +282,10 @@ Deleted kubectl config for news.k8s.local
 Deleted cluster: "news.k8s.local"
 ```
 
-Lets delete the S3 Bucket also.
+- Lets delete the S3 Bucket also.
 
+```
 aws s3api delete-objects --bucket $bucketname --delete $(aws s3api list-object-versions --bucket $bucketname | jq '{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}')
+```
 
 Thats all you have successfully installed a cluster
