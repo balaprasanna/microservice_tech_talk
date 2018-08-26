@@ -14,6 +14,11 @@
 4. Running Multiple containers as different services
 
 ### Kubernetes Workshop
+
+Create a AWS User with programatic acess keys
+- Please follow my video tutorial on how to create a AWS User with programatic acess keys
+    - [https://youtu.be/XnnJvgrl7bI](https://youtu.be/XnnJvgrl7bI)
+
 1. Bootstrap a cluster
     1. A guided workshop using Kops & Cloud 9 IDE. (Installing K8S in AWS)
         1. [Setup Instructions for K8S cluster in AWS](./setup.md)
