@@ -4,8 +4,8 @@
 [http://bit.ly/container_tech_talk](http://bit.ly/container_tech_talk)
 
 ### AWS Cloud9 IDE Setup
-
-[https://youtu.be/jKOtDkeVjmY](https://youtu.be/jKOtDkeVjmY)
+- Please follow my video tutorial on how to setup a Cloud9 IDE
+    - [https://youtu.be/jKOtDkeVjmY](https://youtu.be/jKOtDkeVjmY)
 
 ### Docker Workshop
 1. Pull & Run an image
