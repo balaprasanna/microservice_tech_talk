@@ -1,7 +1,7 @@
 ## Welcome to Docker , Kubernetes, Istio - Microservices workshop
 
 ### Slides:
-[slides](http://bit.ly/container_tech_talk)
+[http://bit.ly/container_tech_talk](http://bit.ly/container_tech_talk)
 
 ### Docker Workshop
 1. Pull & Run an image
