@@ -1,4 +1,4 @@
-## Welcome to Docker , Kubernetes, Istio - Microservices workshop
+## Welcome to Docker , Kubernetes - Microservices workshop
 
 ### Slides:
 [http://bit.ly/container_tech_talk](http://bit.ly/container_tech_talk)
