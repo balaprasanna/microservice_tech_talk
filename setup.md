@@ -284,8 +284,14 @@ Deleted cluster: "news.k8s.local"
 
 - Lets delete the S3 Bucket also.
 
+Make sure your bucketname is same. You can try this `echo $bucketname`.
+
+Now lets delete the S3 bucket using the following snippet.
 ```
-aws s3api delete-objects --bucket $bucketname --delete $(aws s3api list-object-versions --bucket $bucketname | jq '{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}')
+curl -O https://gist.githubusercontent.com/weavenet/f40b09847ac17dd99d16/raw/e9fad5e2cd16f6f54446acdd79d47212f178ac6b/delete_all_object_versions.sh
+
+sh delete_all_object_versions.sh $bucketname;
+aws s3 rb $KOPS_STATE_STORE
 ```
 
 Thats all you have successfully installed a cluster
