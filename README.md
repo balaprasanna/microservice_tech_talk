@@ -17,7 +17,7 @@
 
 Create a AWS User with programatic acess keys
 - Please follow my video tutorial on how to create a AWS User with programatic acess keys
-    - [https://youtu.be/XnnJvgrl7bI](https://youtu.be/XnnJvgrl7bI)
+    - [https://youtu.be/aAejARlxbAk](https://youtu.be/aAejARlxbAk)
 
 1. Bootstrap a cluster
     1. A guided workshop using Kops & Cloud 9 IDE. (Installing K8S in AWS)
