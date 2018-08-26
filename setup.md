@@ -39,6 +39,11 @@ Verify KOPS
 kops version
 ```
 
+Install jq - a tool to parse JSON output in command line.
+```
+sudo yum install jq
+```
+
 Create a S3 Bucket
 ** Info: bucket name = news-kops-state-store **
 
@@ -153,7 +158,48 @@ To get the admin password
 kops get secrets kube --type secret -oplaintext
 ```
 
+Try to login. If it ask for token, use the following command to get the token and access the cluster.
+```
+kops get secrets admin --type secret -oplaintext
+```
+
+<!-- kubectl expose deployment nginx --type=LoadBalancer --name=nginx --port 80 -->
+
+Mean while you can also verify your cluster with `kubectl`
+Get Nodes
+```
+kubectl get nodes
+```
+
+Get Pods
+```
+kubectl get pods
+```
+
+Get Namespaces
+```
+kubectl get ns
+```
+
+## Optionally, you can try to do a simple nginx deployment.
+
+```
+kubectl run nginx --image=nginx --replicas=1
+```
+
+```
+kubectl get pods
+```
+
+```
+kubectl get deployment
+```
+
+
+```
 kubectl expose deployment nginx --type=LoadBalancer --name=nginx --port 80
+```
+Note this step creates a loadbalancer in your aws account. Please make sure you delete this service when you delete your cluster. 
 
 ```
 bala:~/environment $ kubectl get svc
@@ -162,11 +208,11 @@ kubernetes   ClusterIP      100.64.0.1       <none>                             
 nginx        LoadBalancer   100.66.125.181   a74730dc5a92d11e8bfc80285e348f77-1201292986.us-east-2.elb.amazonaws.com   80:32552/TCP   3m
 ```
 
-Finally, Access the application on the External-IP
-curl a74730dc5a92d11e8bfc80285e348f77-1201292986.us-east-2.elb.amazonaws.com
+- Finally, Access the application on the External-IP **
+    - curl a74730dc5a92d11e8bfc80285e348f77-1201292986.us-east-2.elb.amazonaws.com **
 
-Open your browser and test your application
-a74730dc5a92d11e8bfc80285e348f77-1201292986.us-east-2.elb.amazonaws.com
+- Open your browser and test your application
+    - a74730dc5a92d11e8bfc80285e348f77-1201292986.us-east-2.elb.amazonaws.com
 
 
 Lets destroy the Cluster to save money.
@@ -223,8 +269,6 @@ Deleted cluster: "news.k8s.local"
 ```
 
 Lets delete the S3 Bucket also.
-
-sudo yum install jq
 
 aws s3api delete-objects --bucket $bucketname --delete $(aws s3api list-object-versions --bucket $bucketname | jq '{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}')
 
