@@ -21,6 +21,13 @@ Default region name [None]: us-east-2
 Default output format [None]:
 ```
 
+Install kubectl
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl; sudo mv ./kubectl /usr/local/bin/kubectl
+
+```
+
 Install KOPS
 ```
 curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
@@ -51,7 +58,6 @@ bala:~/environment $ aws s3api create-bucket --bucket news-kops-state-store --cr
 }
 ```
 
-
 ```
 aws s3api put-bucket-versioning --bucket $bucketname  --versioning-configuration Status=Enabled
 ```
@@ -61,11 +67,6 @@ Setup Cluster Name
 ```
 export KOPS_CLUSTER_NAME=news.k8s.local
 export KOPS_STATE_STORE=s3://news-kops-state-store
-```
-
-Setup a cluster
-```
-kops create cluster --name=news.k8s.local --state=s3://news-kops-state-store --node-count=2 --node-size=t2.micro --master-size=t2.micro --zones=us-east-2a
 ```
 
 Generate a key-pair
@@ -102,12 +103,12 @@ kops create secret --name news.k8s.local sshpublickey admin -i ~/.ssh/id_rsa.pub
 ```
 
 
-Install kubectl
+Setup a cluster
 ```
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-chmod +x ./kubectl; sudo mv ./kubectl /usr/local/bin/kubectl
+kops create cluster --name=news.k8s.local --state=s3://news-kops-state-store --node-count=2 --node-size=t2.micro --master-size=t2.micro --zones=us-east-2a
+```
 
-```
+This step will take some time. Probably 5-10 mins. You can use the follow two commands to check / monitor the progress of the cluster creation.
 
 Verify the cluster creation
 ```
