@@ -29,4 +29,6 @@ Create a AWS User with programatic acess keys
 2. Deploy an App in K8S
 3. Expose the app via Service
 4. Scale the App to run multiple copies 
-5. Perform Rolling Update to relase new version.
+
+Click here for the Workshop Instructions:
+[Workshop Instructions](./K8S_Workshop.md)
