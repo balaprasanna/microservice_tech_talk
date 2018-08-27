@@ -4,6 +4,7 @@
 
 - hello-world
     `docker run hello-world`
+
     ```
     bala:~/environment/fortune_app (master) $ docker run hello-world
     Unable to find image 'hello-world:latest' locally
@@ -38,7 +39,9 @@
 ## Pull & Run 
 - docker/whalesay
     `docker pull docker/whalesay`
+
     `docker run docker/whalesay cowsay hello`
+    
     ```
     bala:~/environment/fortune_app (master) $ docker run docker/whalesay cowsay hello
         _______ 
