@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fortune-app-nodejs
+  namespace: fortune-app-ns
+  labels:
+    app: fortune-app
+    lang: nodejs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fortune-app
+  template:
+    metadata:
+      labels:
+        app: fortune-app
+        lang: nodejs
+    spec:
+      containers:
+        - image: balanus/fortune-app:latest
+          name: fortune-app
+          env:
+          - name: PORT
+            value: "3000"
+          ports:
+            - containerPort: 3000
+              name: fortune-app
+          imagePullPolicy: Always
