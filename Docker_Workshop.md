@@ -1,4 +1,64 @@
-# Build your own image
+# Stage1:  Pull & Run images as containers
+
+## Run directly
+
+- hello-world
+    `docker run hello-world`
+    ```
+    bala:~/environment/fortune_app (master) $ docker run hello-world
+    Unable to find image 'hello-world:latest' locally
+    latest: Pulling from library/hello-world
+    9db2ca6ccae0: Pull complete 
+    Digest: sha256:4b8ff392a12ed9ea17784bd3c9a8b1fa3299cac44aca35a85c90c5e3c7afacdc
+    Status: Downloaded newer image for hello-world:latest
+
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+    To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+        (amd64)
+    3. The Docker daemon created a new container from that image which runs the
+        executable that produces the output you are currently reading.
+    4. The Docker daemon streamed that output to the Docker client, which sent it
+        to your terminal.
+
+    To try something more ambitious, you can run an Ubuntu container with:
+    $ docker run -it ubuntu bash
+
+    Share images, automate workflows, and more with a free Docker ID:
+    https://hub.docker.com/
+
+    For more examples and ideas, visit:
+    https://docs.docker.com/engine/userguide/
+
+    ```
+
+## Pull & Run 
+- docker/whalesay
+    `docker pull docker/whalesay`
+    `docker run docker/whalesay cowsay hello`
+    ```
+    bala:~/environment/fortune_app (master) $ docker run docker/whalesay cowsay hello
+        _______ 
+        < hello >
+        ------- 
+            \
+            \
+            \     
+                            ##        .            
+                    ## ## ##       ==            
+                ## ## ## ##      ===            
+            /""""""""""""""""___/ ===        
+        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+            \______ o          __/            
+                \    \        __/             
+                \____\______/   
+    ```
+
+
+# Stage2:  Build your own image
 
 Download the App from the following repo.
 We will be using this demo fortune_app for this docker workshop. Its a simple Node.js app, which tell random sfortune. The app will be started on `PORT 3000` by default. But you can still override by passing PORT env variable.
