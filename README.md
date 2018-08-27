@@ -12,6 +12,7 @@
 2. Build & run your own image
 3. Start , stop, restart containerss
 4. Running Multiple copies of same image.
+5. Pushing images to Docker Hub
 
 Click here for the Workshop Instructions:
 [Workshop Instructions](./Docker_Workshop.md)

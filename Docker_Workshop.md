@@ -1,7 +1,7 @@
 # Build your own image
 
 Download the App from the following repo.
-We will be using this demo fortune_app for this docker workshop. Its a simple Node.js app, which tell random fortuen. The app will be started on `PORT 3000` by default. But you can still override by passing PORT env variable.
+We will be using this demo fortune_app for this docker workshop. Its a simple Node.js app, which tell random sfortune. The app will be started on `PORT 3000` by default. But you can still override by passing PORT env variable.
 ```
 git clone https://github.com/balaprasanna/fortune_app.git
 ```
@@ -167,4 +167,69 @@ docker start app0
 docker run -d -p 3001:3000 --name app1 myapp:latest
 docker run -d -p 3002:3000 --name app2 myapp:latest
 docker run -d -p 3003:3000 --name app3 myapp:latest
+```
+
+## Pushing images to Docker Hub
+
+Step 1: You need to create a docker hub accont for this. Please register if you dont have an account.
+- [https://hub.docker.com/](https://hub.docker.com/)
+  
+Step 2: Do a docker login in command line.
+```
+docker login
+```
+When promted please enter username & password.
+
+## Expected Output:
+```
+bala:~/environment/fortune_app (master) $ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: <your username>
+Password: 
+Login Succeeded
+```
+
+Step 3: Tag your image with your username infront
+```
+docker tag myapp:latest balanus/fortune-app:latest
+```
+Step 4: Verify the tagged image by running `docker images`
+```
+bala:~/environment/fortune_app (master) $ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+myapp                 latest              1eeea450f741        29 minutes ago      81.7MB
+balanus/fortune-app   latest              1eeea450f741        29 minutes ago      81.7MB
+node                  alpine              4e50ad7c0e0b        10 days ago         70.6MB
+lambci/lambda         nodejs4.3           6c30c5c1b1e0        8 weeks ago         969MB
+lambci/lambda         python2.7           377732dd7a1f        8 weeks ago         974MB
+lambci/lambda         python3.6           acf16b1d5297        8 weeks ago         1.1GB
+lambci/lambda         nodejs6.10          da301bf4fe34        8 weeks ago         1.02GB
+```
+
+Step 5: Finally, push the image using `docker push`
+
+```
+docker push balanus/fortune-app:latest
+```
+
+## Expected Output
+```
+bala:~/environment/fortune_app (master) $ docker push balanus/fortune-app:latest
+The push refers to repository [docker.io/balanus/fortune-app]
+f41d5bed9291: Pushed 
+d9df74bc7450: Pushed 
+c8f8f4a9df78: Pushed 
+48cb9c80d7bb: Pushed 
+287ef32bfa90: Mounted from library/node 
+ce291010afac: Mounted from library/node 
+73046094a9b8: Mounted from library/node 
+latest: digest: sha256:c0112775a24091482665ec43fd6fda0b854dd0417ade411aba458a3b6c01955c size: 1784
+```
+
+
+###Note:
+```
+By default, all docker images that your push will be a private image.
+Please login to your docker hub account and change it to a public repo.
+From Private repo to Public repo. So that , we can use this image to run in K8S later.
 ```
