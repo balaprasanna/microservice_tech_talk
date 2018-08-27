@@ -10,7 +10,7 @@ Setup Cloud9 IDE
 
 Create AWS_KEY , AWS_SECRET
 - Follow this link for a video reference on how to create a demo user with Programmatic access keys.
-- <<TBA>>
+- [https://youtu.be/aAejARlxbAk](https://youtu.be/aAejARlxbAk)
 
 Configure aws-cli
 ```
