@@ -90,3 +90,47 @@ lambci/lambda       python2.7           377732dd7a1f        8 weeks ago         
 lambci/lambda       python3.6           acf16b1d5297        8 weeks ago         1.1GB
 lambci/lambda       nodejs6.10          da301bf4fe34        8 weeks ago         1.02GB
 ```
+
+## Run a container from your image
+```
+docker run -d -p 3000:3000 --name app0 myapp:latest
+```
+
+Explainations:
+```
+--name          Name for your container
+-p 3000:3000    Port mapping from host 3000 to container 3000
+-d              Deamonized (Run the container in Background)
+myapp:latest    Name of the image (myapp) & its tag (latest)
+```
+
+## List all the running containers
+```
+docker ps
+```
+## Expected Output
+
+```
+bala:~/environment/fortune_app (master) $ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+92b2ebaa21b5        myapp:latest        "npm start"         2 seconds ago       Up 1 second         0.0.0.0:3000->3000/tcp   app0
+```
+
+## Reach the app running inside the container
+`curl` `localhost:3000`, Thats where the application is running.
+```
+bala:~/environment/fortune_app (master) $ curl localhost:3000
+In marriage, as in war, it is permitted to take every advantage of the enemy.
+```
+
+```
+bala:~/environment/fortune_app (master) $ curl localhost:3000
+Almost anything derogatory you could say about today's software design
+would be accurate.
+                -- K.E. Iverson
+bala:~/environment/fortune_app (master) $ 
+```
+
+## Optionally: Use Public ip
+Hint: You can use the EC2 public ip of the EC2 machine which supports the Cloud9 IDE to reach your app.
+Since you already exposed 3000 port, make sure inbound rules are set to reach your EC2 machine on PORT 3000
