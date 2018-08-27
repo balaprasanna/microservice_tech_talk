@@ -41,7 +41,7 @@
     `docker pull docker/whalesay`
 
     `docker run docker/whalesay cowsay hello`
-    
+
     ```
     bala:~/environment/fortune_app (master) $ docker run docker/whalesay cowsay hello
         _______ 
@@ -68,6 +68,9 @@ We will be using this demo fortune_app for this docker workshop. Its a simple No
 ```
 git clone https://github.com/balaprasanna/fortune_app.git
 ```
+
+Also create an account in docker hub if dont have. We will need this to push our images to public / private registry in the later part of the demo.
+- [https://hub.docker.com/](https://hub.docker.com/)
 
 **Link for our base image**
 - [https://hub.docker.com/_/node/](https://hub.docker.com/_/node/)
