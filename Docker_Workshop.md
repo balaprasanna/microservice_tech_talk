@@ -31,7 +31,7 @@ CMD ["npm", "start"]
 docker build -t myapp:latest .
 ```
 
-## EXPECTED OUTPUT
+### EXPECTED OUTPUT
 
 ```
 bala:~/environment/fortune_app (master) $ docker build -t myapp:latest .
@@ -84,7 +84,7 @@ Successfully tagged myapp:latest
 docker images
 ```
 
-## EXPECTED OUTPUT
+### EXPECTED OUTPUT
 ```
 bala:~/environment/fortune_app (master) $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -113,7 +113,7 @@ myapp:latest    Name of the image (myapp) & its tag (latest)
 ```
 docker ps
 ```
-## Expected Output
+### Expected Output
 
 ```
 bala:~/environment/fortune_app (master) $ docker ps
@@ -180,7 +180,7 @@ docker login
 ```
 When promted please enter username & password.
 
-## Expected Output:
+### Expected Output:
 ```
 bala:~/environment/fortune_app (master) $ docker login
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
@@ -212,7 +212,7 @@ Step 5: Finally, push the image using `docker push`
 docker push balanus/fortune-app:latest
 ```
 
-## Expected Output
+### Expected Output
 ```
 bala:~/environment/fortune_app (master) $ docker push balanus/fortune-app:latest
 The push refers to repository [docker.io/balanus/fortune-app]
@@ -227,7 +227,7 @@ latest: digest: sha256:c0112775a24091482665ec43fd6fda0b854dd0417ade411aba458a3b6
 ```
 
 
-###Note:
+### Note:
 ```
 By default, all docker images that your push will be a private image.
 Please login to your docker hub account and change it to a public repo.
