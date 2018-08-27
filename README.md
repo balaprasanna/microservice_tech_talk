@@ -11,7 +11,10 @@
 1. Pull & Run an image
 2. Build & run your own image
 3. Start , stop, restart containerss
-4. Running Multiple containers as different services
+4. Running Multiple copies of same image.
+
+Click here for the Workshop Instructions:
+[Workshop Instructions](./Docker_Workshop.md)
 
 ### Kubernetes Workshop
 
