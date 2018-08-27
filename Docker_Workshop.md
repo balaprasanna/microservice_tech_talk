@@ -1,5 +1,10 @@
 # Build your own image
 
+Download the App from the following repo.
+We will be using this demo fortune_app for this docker workshop. Its a simple Node.js app, which tell random fortuen. The app will be started on `PORT 3000` by default. But you can still override by passing PORT env variable.
+```
+git clone https://github.com/balaprasanna/fortune_app.git
+```
 
 **Link for our base image**
 - [https://hub.docker.com/_/node/](https://hub.docker.com/_/node/)
