@@ -134,3 +134,32 @@ bala:~/environment/fortune_app (master) $
 ## Optionally: Use Public ip
 Hint: You can use the EC2 public ip of the EC2 machine which supports the Cloud9 IDE to reach your app.
 Since you already exposed 3000 port, make sure inbound rules are set to reach your EC2 machine on PORT 3000
+
+
+## More commands: Start,Stop
+
+### To stop
+
+Use the container id to stop the container
+```
+docker stop 92b2ebaa21b5
+```
+
+Use the container name to stop the container
+```
+docker stop app0
+```
+
+### To start
+Use can either use container name or id to start / stop contianers.
+```
+docker start app0
+```
+
+## Last run multiple copies on different ports:
+
+```
+docker run -d -p 3001:3000 --name app1 myapp:latest
+docker run -d -p 3002:3000 --name app2 myapp:latest
+docker run -d -p 3003:3000 --name app3 myapp:latest
+```
