@@ -71,7 +71,7 @@ def getsources():
 
 
 # Registering Blueprints to /
-app.register_blueprint(api, url_prefix =f'/api/{API_VERSION}')
+app.register_blueprint(api, url_prefix ='/api/' + API_VERSION)
 
 # Start it on this "PORT"
 print("Starting APP in {} PORT".format(PORT))
